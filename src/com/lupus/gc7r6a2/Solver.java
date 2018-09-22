@@ -13,7 +13,7 @@ public class Solver {
 		Calendar cal=null;
 		
 		for (Calendar calendar : dateCombination) {
-			Date date = calendar.getTime();
+//			Date date = calendar.getTime();
 			cal = calendar;
 //			System.out.println(sdf.format(date));
 		}

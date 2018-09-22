@@ -46,4 +46,8 @@ public class Variable<T extends Object> {
 	}
 	
 
+	@Override
+	public String toString() {
+		return String.format("%s=%s", name, String.valueOf(value));
+	}
 }
