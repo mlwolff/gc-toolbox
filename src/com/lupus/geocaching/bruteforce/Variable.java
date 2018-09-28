@@ -1,5 +1,6 @@
 package com.lupus.geocaching.bruteforce;
 
+import com.lupus.geocaching.bruteforce.api.VariableOperator;
 
 /**
  * 
@@ -7,7 +8,8 @@ package com.lupus.geocaching.bruteforce;
  *
  * @param <T>
  */
-public class Variable<T extends Object> {
+public abstract class Variable<T extends Object> implements com.lupus.geocaching.bruteforce.api.Variable<T> {
+	private final VariableOperator<T> operator;
 	private final String name;
 	private T value;
 	
@@ -15,36 +17,44 @@ public class Variable<T extends Object> {
 	 * 
 	 * @param name
 	 */
-	public Variable(String name) {
+	public Variable(VariableOperator<T> operator, String name, T value) {
 		this.name = name;
-		this.value = null;
+		this.value = value;
+		this.operator = operator;
 	}
 	
-	/**
-	 * 
-	 * @return
+	/* (non-Javadoc)
+	 * @see com.lupus.geocaching.bruteforce.IVariable#getName()
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
 	
 	
-	/**
-	 * 
-	 * @param value
+	/* (non-Javadoc)
+	 * @see com.lupus.geocaching.bruteforce.IVariable#setValue(T)
 	 */
+	@Override
 	public void setValue(T value) {
 		this.value = value;
 	}
 	
-	/**
-	 * 
-	 * @return
+	/* (non-Javadoc)
+	 * @see com.lupus.geocaching.bruteforce.IVariable#getValue()
 	 */
+	@Override
 	public T getValue() {
 		return value;
 	}
-	
+
+	@Override
+	public boolean increment() {
+		T newValue = operator.increment(value);
+		
+		
+		return operator.hasMaxvalExceeded();
+	}
 
 	@Override
 	public String toString() {

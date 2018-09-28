@@ -1,5 +1,7 @@
 package com.lupus.geocaching.bruteforce;
 
+import com.lupus.geocaching.bruteforce.api.Variable;
+
 public interface ValueSwitcher<T extends Object> {
 	
 	/**
@@ -15,6 +17,6 @@ public interface ValueSwitcher<T extends Object> {
 	 * @return
 	 * 		<code>true</code>, if the last value have been exceeded.
 	 */
-	boolean nextVal(Variable<T> var);
+	boolean nextVal(Variable<Integer> var);
 
 }

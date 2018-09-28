@@ -1,5 +1,7 @@
 package com.lupus.geocaching.bruteforce;
 
+import com.lupus.geocaching.bruteforce.api.Variable;
+
 public class DigitSwitcher implements ValueSwitcher<Integer> {
 
 	@Override

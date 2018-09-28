@@ -14,6 +14,10 @@ public class VarTest {
 		List<Variable<Integer>> vList = Arrays.asList(new Variable<>("A"), new Variable<>("B"));
 		ValueSwitcher<Integer> switcher = new DigitSwitcher();
 
+		vList.get(0).setValue(0);
+		vList.get(1).setValue(3);
+
+		
 		VariableCombinator<Integer> vc = new VariableCombinator<Integer>(vList, switcher);
 
 		vc.printVariables();
