@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class VariableCombinator<T extends Object> {
-	private final List<Variable<T>> variables;
+	private final List<com.lupus.geocaching.bruteforce.api.Variable<T>> variables;
 	
-	public VariableCombinator(Collection<Variable<T>> variables, ValueSwitcher<T> switcher) {
+	public VariableCombinator(Collection<com.lupus.geocaching.bruteforce.api.Variable<T>> variables) {
 		Objects.requireNonNull(variables);
 		
 		this.variables = new ArrayList<>(variables);

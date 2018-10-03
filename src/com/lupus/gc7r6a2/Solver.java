@@ -9,14 +9,19 @@ public class Solver {
 
 	public static void main(String[] args) {
 		SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyHHmm");
-		DateCombination dateCombination = new DateCombination(new GregorianCalendar());
+		GregorianCalendar startDate = new GregorianCalendar();
+		DateCombination dateCombination = new DateCombination(startDate);
 		Calendar cal=null;
+		int i=0;
+		
 		
 		for (Calendar calendar : dateCombination) {
 //			Date date = calendar.getTime();
 			cal = calendar;
-//			System.out.println(sdf.format(date));
+			i++;
+//			System.out.println(sdf.format(cal.getTime()));
 		}
+		System.out.println(String.format("%d Versuche waren nötig.\n", i));
 		System.out.println(sdf.format(cal.getTime()));
 		
 	}

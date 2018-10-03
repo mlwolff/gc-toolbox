@@ -22,32 +22,38 @@ public abstract class Variable<T extends Object> implements com.lupus.geocaching
 		this.value = value;
 		this.operator = operator;
 	}
-	
-	/* (non-Javadoc)
-	 * @see com.lupus.geocaching.bruteforce.IVariable#getName()
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.lupus.geocaching.bruteforce.api.Variable#getName()
 	 */
 	@Override
 	public String getName() {
 		return name;
 	}
-	
-	
-	/* (non-Javadoc)
-	 * @see com.lupus.geocaching.bruteforce.IVariable#setValue(T)
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.lupus.geocaching.bruteforce.api.Variable#setValue(java.lang.Object)
 	 */
 	@Override
 	public void setValue(T value) {
 		this.value = value;
 	}
 	
-	/* (non-Javadoc)
-	 * @see com.lupus.geocaching.bruteforce.IVariable#getValue()
+	/*
+	 * (non-Javadoc)
+	 * @see com.lupus.geocaching.bruteforce.api.Variable#getValue()
 	 */
 	@Override
 	public T getValue() {
 		return value;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.lupus.geocaching.bruteforce.api.Variable#increment()
+	 */
 	@Override
 	public boolean increment() {
 		T newValue = operator.increment(value);
