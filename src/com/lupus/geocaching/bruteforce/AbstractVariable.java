@@ -1,5 +1,6 @@
 package com.lupus.geocaching.bruteforce;
 
+import com.lupus.geocaching.bruteforce.api.Variable;
 import com.lupus.geocaching.bruteforce.api.VariableOperator;
 
 /**
@@ -8,7 +9,7 @@ import com.lupus.geocaching.bruteforce.api.VariableOperator;
  *
  * @param <T>
  */
-public abstract class Variable<T extends Object> implements com.lupus.geocaching.bruteforce.api.Variable<T> {
+public abstract class AbstractVariable<T extends Object> implements Variable<T> {
 	private final VariableOperator<T> operator;
 	private final String name;
 	private T value;
@@ -17,7 +18,7 @@ public abstract class Variable<T extends Object> implements com.lupus.geocaching
 	 * 
 	 * @param name
 	 */
-	public Variable(VariableOperator<T> operator, String name, T value) {
+	public AbstractVariable(VariableOperator<T> operator, String name, T value) {
 		this.name = name;
 		this.value = value;
 		this.operator = operator;
@@ -57,7 +58,7 @@ public abstract class Variable<T extends Object> implements com.lupus.geocaching
 	@Override
 	public boolean increment() {
 		T newValue = operator.increment(value);
-		
+		setValue(newValue);
 		
 		return operator.hasMaxvalExceeded();
 	}
