@@ -9,20 +9,20 @@ import com.lupus.geocaching.bruteforce.digit.DigitVariable;
 
 public class VarTest {
 
-	public static void main(String[] args) {
-		final DigitVariable varA = new DigitVariable("A", 0);
-		final DigitVariable varB = new DigitVariable("B", 0);
-		List<Variable<Integer>> vList = Arrays.asList(varA, varB);
+    public static void main(String[] args) {
+        final DigitVariable varA = new DigitVariable("A", 0);
+        final DigitVariable varB = new DigitVariable("B", 0);
+        List<Variable<Integer>> vList = Arrays.asList(varA, varB);
 
-		
-		VariableCombinator<Integer> vc = new VariableCombinator<Integer>(vList);
+        VariableCombinator<Integer> vc = new VariableCombinator<Integer>(vList);
 
-		vc.printVariables();
-		while(!varA.increment()) vc.printVariables();
-		vc.printVariables();
-		System.out.println("A rotated.");
-		while(!varB.increment()) vc.printVariables();
-		vc.printVariables();
-		System.out.println("B rotated.");
-	}
+        vc.printVariables();
+        while (!varA.increment()) vc.printVariables();
+        vc.printVariables();
+        System.out.println("A rotated.");
+        
+        while (!varB.increment()) vc.printVariables();
+        vc.printVariables();
+        System.out.println("B rotated.");
+    }
 }
