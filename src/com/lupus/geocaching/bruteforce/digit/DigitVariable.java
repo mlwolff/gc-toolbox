@@ -15,4 +15,15 @@ public class DigitVariable extends AbstractVariable<Integer> {
     public DigitVariable(String name, Integer value) {
         super(new DigitOperator(), name, value);
     }
-}
+
+    /*
+     * (non-Javadoc)
+     * @see java.lang.Object#clone()
+     */
+    public Object clone() {
+        DigitVariable rc = new DigitVariable(getName(), getValue());
+        return rc;
+    }
+ 
+    
+ }

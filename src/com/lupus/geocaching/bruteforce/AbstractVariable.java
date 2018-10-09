@@ -26,6 +26,15 @@ public abstract class AbstractVariable<T extends Object> implements Variable<T> 
 
     /*
      * (non-Javadoc)
+     * @see java.lang.Object#clone()
+     */
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        throw new CloneNotSupportedException("clone() has to be implemented by subclass.");
+    }
+    
+    /*
+     * (non-Javadoc)
      * 
      * @see com.lupus.geocaching.bruteforce.api.Variable#getName()
      */
