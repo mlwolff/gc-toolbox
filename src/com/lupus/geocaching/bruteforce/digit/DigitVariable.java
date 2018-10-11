@@ -8,12 +8,14 @@ import com.lupus.geocaching.bruteforce.AbstractVariable;
  *
  */
 public class DigitVariable extends AbstractVariable<Integer> {
+    private static final DigitOperator operator = new DigitOperator();
+    
     public DigitVariable(String name) {
-        super(new DigitOperator(), name, 0);
+        super(operator, name, 0);
     }
 
     public DigitVariable(String name, Integer value) {
-        super(new DigitOperator(), name, value);
+        super(operator, name, value);
     }
 
     /*

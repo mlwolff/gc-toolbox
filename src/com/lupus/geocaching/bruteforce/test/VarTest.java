@@ -16,13 +16,8 @@ public class VarTest {
 
         VariableCombinator<Integer> vc = new VariableCombinator<Integer>(vList);
 
-        vc.printVariables();
-        while (!varA.increment()) vc.printVariables();
-        vc.printVariables();
-        System.out.println("A rotated.");
-        
-        while (!varB.increment()) vc.printVariables();
-        vc.printVariables();
-        System.out.println("B rotated.");
+        for (List<Variable<Integer>> vars : vc) {
+            System.out.println(vars);
+        }
     }
 }
