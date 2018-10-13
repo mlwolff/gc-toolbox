@@ -1,6 +1,6 @@
 package com.lupus.geocaching.bruteforce.api;
 
-public interface Variable<T extends Object> extends Cloneable {
+public interface Variable<T> extends Cloneable {
 
     /**
      * Clones a {@link Variable} object.
