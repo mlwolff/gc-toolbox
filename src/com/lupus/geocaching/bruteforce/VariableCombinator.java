@@ -15,7 +15,7 @@ import com.lupus.geocaching.bruteforce.api.Variable;
  *
  * @param <T>
  */
-public class VariableCombinator<T extends Object> implements Iterable<List<Variable<T>>> {
+public class VariableCombinator<T extends Object> implements Iterable<VariableCombination<T>> {
     private final List<Variable<T>> variables;
 
     /**
@@ -33,7 +33,7 @@ public class VariableCombinator<T extends Object> implements Iterable<List<Varia
      * @see java.lang.Iterable#iterator()
      */
     @Override
-    public Iterator<List<Variable<T>>> iterator() {
+    public Iterator<VariableCombination<T>> iterator() {
         return new VariablesIterator<>(variables);
     }
 
@@ -42,8 +42,8 @@ public class VariableCombinator<T extends Object> implements Iterable<List<Varia
      * @author mlwolff
      *
      */
-    public static class VariablesIterator<T extends Object> implements Iterator<List<Variable<T>>> {
-        private final List<Variable<T>> currentCombination;
+    public static class VariablesIterator<T extends Object> implements Iterator<VariableCombination<T>> {
+        private final VariableCombination<T> currentCombination;
         private boolean allResetted = false;
         private boolean firstCall = true;
         
@@ -59,15 +59,7 @@ public class VariableCombinator<T extends Object> implements Iterable<List<Varia
         private VariablesIterator(List<Variable<T>> initialVariableCombination) {
             Objects.requireNonNull(initialVariableCombination);
             
-            currentCombination = new ArrayList<>(initialVariableCombination.size());
-
-            try {
-                for (Variable<T> variable : initialVariableCombination) {
-                    currentCombination.add(((Variable<T>)variable.clone()));
-                }
-            } catch (CloneNotSupportedException e) {
-                throw new RuntimeException(e);
-            }
+            currentCombination = new VariableCombination<>(initialVariableCombination);
         }
         
         /*
@@ -84,14 +76,14 @@ public class VariableCombinator<T extends Object> implements Iterable<List<Varia
          * @see java.util.Iterator#next()
          */
         @Override
-        public List<Variable<T>> next() {
+        public VariableCombination<T> next() {
             if (!firstCall) {
                 calculateNextIteration();
             }
             
             firstCall = false;
             
-            return Collections.unmodifiableList(currentCombination);
+            return currentCombination;
         }
 
         /**
@@ -106,7 +98,6 @@ public class VariableCombinator<T extends Object> implements Iterable<List<Varia
             } while (resetted && ++resetCnt < currentCombination.size());
             
             allResetted = (resetCnt == currentCombination.size());
-            
         }
         
     }

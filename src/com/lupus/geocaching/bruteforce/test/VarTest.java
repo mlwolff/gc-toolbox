@@ -3,6 +3,7 @@ package com.lupus.geocaching.bruteforce.test;
 import java.util.Arrays;
 import java.util.List;
 
+import com.lupus.geocaching.bruteforce.VariableCombination;
 import com.lupus.geocaching.bruteforce.VariableCombinator;
 import com.lupus.geocaching.bruteforce.api.Variable;
 import com.lupus.geocaching.bruteforce.digit.DigitVariable;
@@ -16,8 +17,8 @@ public class VarTest {
 
         VariableCombinator<Integer> vc = new VariableCombinator<Integer>(vList);
 
-        for (List<Variable<Integer>> vars : vc) {
-            System.out.println(vars);
+        for (VariableCombination<Integer> combintion : vc) {
+            System.out.println(combintion);
         }
     }
 }
