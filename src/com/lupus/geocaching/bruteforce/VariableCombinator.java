@@ -17,16 +17,17 @@ import com.lupus.geocaching.bruteforce.api.Variable;
  * @param <T>
  */
 public class VariableCombinator<T extends Object> implements Iterable<VariableCombination<T>> {
-    private final List<Variable<T>> variables;
+    private final VariableCombination<T> variables;
 
     /**
      * 
-     * @param variables
+     * @param combination
+     *      Initial {@link VariableCombination}
      */
-    public VariableCombinator(Collection<Variable<T>> variables) {
-        Objects.requireNonNull(variables);
+    public VariableCombinator(VariableCombination<T> combination) {
+        Objects.requireNonNull(combination);
 
-        this.variables = new ArrayList<>(variables);
+        this.variables = combination;
     }
 
     /*
@@ -57,10 +58,10 @@ public class VariableCombinator<T extends Object> implements Iterable<VariableCo
          * @param initialVariableCombination
          */
         @SuppressWarnings("unchecked")
-        private VariablesIterator(List<Variable<T>> initialVariableCombination) {
+        private VariablesIterator(VariableCombination<T> initialVariableCombination) {
             Objects.requireNonNull(initialVariableCombination);
             
-            currentCombination = new VariableCombination<>(initialVariableCombination);
+            currentCombination = new VariableCombination<>(initialVariableCombination.getVariables());
         }
         
         /*
