@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.lupus.geocaching.bruteforce.VariableCombination;
 import com.lupus.geocaching.bruteforce.VariableCombinator;
+import com.lupus.geocaching.bruteforce.api.SolutionChecker;
 import com.lupus.geocaching.bruteforce.api.Variable;
 import com.lupus.geocaching.bruteforce.digit.DigitVariable;
 
@@ -16,9 +17,12 @@ public class VarTest {
         List<Variable<Integer>> vList = Arrays.asList(varA, varB);
 
         VariableCombinator<Integer> vc = new VariableCombinator<Integer>(vList);
+        SolutionChecker<Integer> checker = new SevenEightChecker();
 
-        for (VariableCombination<Integer> combintion : vc) {
-            System.out.println(combintion);
+        for (VariableCombination<Integer> combination : vc) {
+            if (checker.checkSolution(combination)) {
+                System.out.println(combination);
+            }
         }
     }
 }

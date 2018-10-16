@@ -1,6 +1,6 @@
 package com.lupus.geocaching.bruteforce.api;
 
-import java.util.List;
+import com.lupus.geocaching.bruteforce.VariableCombination;
 
 /**
  * 
@@ -12,8 +12,8 @@ public interface SolutionChecker<T> {
     
     /**
      * 
-     * @param variables
+     * @param combination
      * @return
      */
-    boolean checkSolution(List<Variable<T>> variables);
+    boolean checkSolution(VariableCombination<T> combination);
 }
