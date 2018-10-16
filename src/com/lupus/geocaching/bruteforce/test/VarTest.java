@@ -14,8 +14,9 @@ public class VarTest {
         final DigitVariable varA = new DigitVariable("A", 0);
         final DigitVariable varB = new DigitVariable("B", 0);
         List<Variable<Integer>> vList = Arrays.asList(varA, varB);
+        VariableCombination<Integer> combination = new VariableCombination<>(vList);
 
-        VariableCombinator<Integer> vc = new VariableCombinator<Integer>(vList);
+        VariableCombinator<Integer> vc = new VariableCombinator<Integer>(combination);
 
         for (VariableCombination<Integer> combintion : vc) {
             System.out.println(combintion);
