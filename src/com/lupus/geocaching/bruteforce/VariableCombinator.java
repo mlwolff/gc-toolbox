@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 import com.lupus.geocaching.bruteforce.api.Variable;
@@ -44,8 +45,8 @@ public class VariableCombinator<T extends Object> implements Iterable<VariableCo
      */
     public static class VariablesIterator<T extends Object> implements Iterator<VariableCombination<T>> {
         private final VariableCombination<T> currentCombination;
-        private boolean allResetted = false;
-        private boolean firstCall = true;
+        private boolean hasNext = true;
+        private boolean calculated = true;
         
         /**
          * Private constructor.
@@ -68,7 +69,11 @@ public class VariableCombinator<T extends Object> implements Iterable<VariableCo
          */
         @Override
         public boolean hasNext() {
-            return !allResetted;
+            if (!calculated) {
+                hasNext = !calculateNextIteration();
+                calculated = true;
+            }
+            return hasNext;
         }
 
         /*
@@ -77,19 +82,21 @@ public class VariableCombinator<T extends Object> implements Iterable<VariableCo
          */
         @Override
         public VariableCombination<T> next() {
-            if (!firstCall) {
-                calculateNextIteration();
+            if (hasNext()) {
+                calculated = false;
+                return currentCombination;
             }
             
-            firstCall = false;
-            
-            return currentCombination;
+            throw new NoSuchElementException("No more combinations available.");
         }
 
         /**
-         * Internel helper for calculation of the next iteration.
+         * Internal helper for calculation of the next iteration.
+         * 
+         * @return
+         *      <code>true</code>, if all variables has been resetted.
          */
-        private void calculateNextIteration() {
+        private boolean calculateNextIteration() {
             int resetCnt = 0;
             boolean resetted = false;
             
@@ -97,7 +104,7 @@ public class VariableCombinator<T extends Object> implements Iterable<VariableCo
                 resetted = currentCombination.get(resetCnt).increment();
             } while (resetted && ++resetCnt < currentCombination.size());
             
-            allResetted = (resetCnt == currentCombination.size());
+            return (resetCnt == currentCombination.size());
         }
         
     }

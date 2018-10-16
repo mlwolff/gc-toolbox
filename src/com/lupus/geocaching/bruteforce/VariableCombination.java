@@ -28,7 +28,7 @@ public class VariableCombination<T> {
         Objects.requireNonNull(variables, "Parameter variable must not be null.");
         
         this.varMap = new LinkedHashMap<>(variables.size());
-        this.varList = new LinkedList<>(variables);
+        this.varList = new LinkedList<>();
         
         try {
             for (Variable<T> variable : variables) {
