@@ -15,9 +15,9 @@ public class VarTest {
         final DigitVariable varA = new DigitVariable("A", 0);
         final DigitVariable varB = new DigitVariable("B", 0);
         List<Variable<Integer>> vList = Arrays.asList(varA, varB);
-        VariableCombination<Integer> combination = new VariableCombination<>(vList);
+        VariableCombination<Integer> initialCombination = new VariableCombination<>(vList);
 
-        VariableCombinator<Integer> vc = new VariableCombinator<Integer>(combination);
+        VariableCombinator<Integer> vc = new VariableCombinator<Integer>(initialCombination);
         SolutionChecker<Integer> checker = new SevenEightChecker();
 
         for (VariableCombination<Integer> combination : vc) {
