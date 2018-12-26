@@ -9,7 +9,7 @@ public interface Variable<T> extends Cloneable {
      * 
      * @throws CloneNotSupportedException, if cloning not supported.
      */
-    public Object clone() throws CloneNotSupportedException;
+    public Variable<T> clone() throws CloneNotSupportedException;
     
     /**
 	 * 

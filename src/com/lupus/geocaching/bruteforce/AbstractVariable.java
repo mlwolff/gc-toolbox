@@ -29,7 +29,7 @@ public abstract class AbstractVariable<T extends Object> implements Variable<T> 
      * @see java.lang.Object#clone()
      */
     @Override
-    public Object clone() throws CloneNotSupportedException {
+    public Variable<T> clone() throws CloneNotSupportedException {
         throw new CloneNotSupportedException("clone() has to be implemented by subclass.");
     }
     

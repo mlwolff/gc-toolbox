@@ -32,7 +32,7 @@ public class VariableCombination<T> {
         
         try {
             for (Variable<T> variable : variables) {
-                Variable<T> clonedVar = (Variable<T>)variable.clone();
+                Variable<T> clonedVar = variable.clone();
                 varMap.put(variable.getName(), clonedVar);
                 varList.add(clonedVar);
             }

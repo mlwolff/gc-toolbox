@@ -22,7 +22,7 @@ public class DigitVariable extends AbstractVariable<Integer> {
      * (non-Javadoc)
      * @see java.lang.Object#clone()
      */
-    public Object clone() {
+    public DigitVariable clone() {
         DigitVariable rc = new DigitVariable(getName(), getValue());
         return rc;
     }

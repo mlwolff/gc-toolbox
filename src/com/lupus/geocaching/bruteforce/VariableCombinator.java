@@ -1,14 +1,8 @@
 package com.lupus.geocaching.bruteforce;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Objects;
-
-import com.lupus.geocaching.bruteforce.api.Variable;
 
 /**
  * 
@@ -57,7 +51,6 @@ public class VariableCombinator<T extends Object> implements Iterable<VariableCo
          * 
          * @param initialVariableCombination
          */
-        @SuppressWarnings("unchecked")
         private VariablesIterator(VariableCombination<T> initialVariableCombination) {
             Objects.requireNonNull(initialVariableCombination);
             
@@ -102,6 +95,7 @@ public class VariableCombinator<T extends Object> implements Iterable<VariableCo
             boolean resetted = false;
             
             do {
+                // Increments variable at pos 'resetCnt'
                 resetted = currentCombination.get(resetCnt).increment();
             } while (resetted && ++resetCnt < currentCombination.size());
             
