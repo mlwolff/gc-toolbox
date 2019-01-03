@@ -38,13 +38,17 @@ public class CrossSumTest {
         VariableCombinator<Integer> combinator = new VariableCombinator<Integer>(new VariableCombination<>(varList));
 		SolutionChecker<Integer> checker = new CrossSumChecker(divider);
 		
+		long start = System.currentTimeMillis();
+		
 		for (VariableCombination<Integer> combination : combinator) {
 			if (checker.checkSolution(combination)) {
 				System.out.println(combination);
 			}
 		}
 		
-		System.out.println("Finished.");
+		long end = System.currentTimeMillis();
+		
+		System.out.println("Finished in " + (end-start) + "ms.");
 	}
 
 }
