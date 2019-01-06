@@ -22,22 +22,15 @@ public class Solver {
 				intList.add(i);
 			});
 		};
-
-		System.out.println(intList);
 		
-		int count = 1;
-		
+		int index = 6;
 		
 		while (intList.size() > 15) {
-			for (int i = 0; i < intList.size(); i++) {
-				if (count % 7 == 0) {
-					intList.remove(i--);
-					if (intList.size() == 15) break;
-				}
-				count++;
-			}
+			intList.remove(index);
+			index += 6;
+			index %= intList.size();
 		}
-		
+				
 		System.out.println(intList);
 	}
 
