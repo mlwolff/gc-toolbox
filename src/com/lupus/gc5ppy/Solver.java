@@ -16,11 +16,9 @@ public class Solver {
 
 	public static void main(String[] args) throws IOException {
 		List<Integer> intList = new ArrayList<Integer>();
+		
 		try (InputStream is = Solver.class.getClassLoader().getResourceAsStream("com/lupus/gc5ppy/data.txt");) {
-			
-			Utils.readInts(is, i -> {
-				intList.add(i);
-			});
+			Utils.readInts(is, intList::add);
 		};
 		
 		int index = 6;
