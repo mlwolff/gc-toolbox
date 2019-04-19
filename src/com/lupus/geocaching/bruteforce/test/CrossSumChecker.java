@@ -17,7 +17,8 @@ public class CrossSumChecker implements SolutionChecker<Integer> {
 	
 	@Override
 	public boolean checkSolution(VariableCombination<Integer> combination) {
-		return crossSum(combination) % divider == 0;
+		int crossSum = crossSum(combination);
+        return crossSum % divider == 0 && crossSum != 0;
 	}
 	
 	/**
