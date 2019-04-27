@@ -3,12 +3,14 @@
  */
 package com.lupus.geocaching.bruteforce;
 
+import java.awt.datatransfer.Clipboard;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import com.lupus.geocaching.bruteforce.api.Variable;
 
@@ -16,7 +18,7 @@ import com.lupus.geocaching.bruteforce.api.Variable;
  * @author mlwolff
  *
  */
-public class VariableCombination<T> {
+public class VariableCombination<T> implements Cloneable {
     final private Map<String, Variable<T>> varMap;
     final private LinkedList<Variable<T>> varList;
     
@@ -31,15 +33,14 @@ public class VariableCombination<T> {
         this.varList = new LinkedList<>();
         
         try {
-            for (Variable<T> variable : variables) {
-                Variable<T> clonedVar = variable.clone();
-                varMap.put(variable.getName(), clonedVar);
-                varList.add(clonedVar);
-            }
+	        for (Variable<T> variable : variables) {
+	            Variable<T> clonedVar = variable.clone();
+	            varMap.put(variable.getName(), clonedVar);
+	            varList.add(clonedVar);
+	        }
         } catch (CloneNotSupportedException e) {
-            throw new RuntimeException(e);
+        	throw new RuntimeException(e);
         }
-        
     }
     
     /**
@@ -90,5 +91,10 @@ public class VariableCombination<T> {
     @Override
     public String toString() {
         return varList.toString();
+    }
+    
+    @Override
+    protected VariableCombination<T> clone()  {
+    	return new VariableCombination<>(varList); 
     }
 }

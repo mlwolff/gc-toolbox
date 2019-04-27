@@ -78,7 +78,7 @@ public class VariableCombinator<T extends Object> implements Iterable<VariableCo
         public VariableCombination<T> next() {
             if (hasNext()) {
                 calculated = false;
-                return currentCombination;
+                return currentCombination.clone();
             }
             
             throw new NoSuchElementException("No more combinations available.");

@@ -47,20 +47,30 @@ public class Solver {
         VariableCombinator<GeoCoin> vc = new VariableCombinator<GeoCoin>(initialCombination);
         SolutionChecker<GeoCoin> checker = new MaxWeightChecker(36);
 
-        List<VariableCombination<GeoCoin>> solutions = new LinkedList<>();
+        VariableCombination<GeoCoin> solution = null;
+        
         int maxValue = 0;
         
         for (VariableCombination<GeoCoin> combination : vc) {
             if (checker.checkSolution(combination)) {
-            	solutions.add(combination);
             	
             	int combinationValue = getValue(combination);
+            	
 				if (maxValue < combinationValue) {
             		maxValue = combinationValue;
-            		System.out.println("New solution found, value: " + combinationValue);
-                    printCombination(combination);
+            		solution = combination;
+//            		System.out.println("New solution found, value: " + combinationValue);
             	}
             }
+        }
+        
+        if (solution != null) {
+        	System.out.println("Solution is");
+        	System.out.println("===========");
+        	System.out.println("");
+        	printCombination(solution);
+        } else {
+        	System.err.println("No solution found.");
         }
 	}
 	
