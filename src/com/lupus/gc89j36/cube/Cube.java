@@ -1,5 +1,6 @@
 package com.lupus.gc89j36.cube;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -24,6 +25,11 @@ public class Cube {
      */
     public CubeFace[] getFaces() {
         return faces;
+    }
+
+    @Override
+    public String toString() {
+        return "Cube [faces=" + Arrays.toString(faces) + "]";
     }
 
     /**
