@@ -1,6 +1,7 @@
 package com.lupus.gc89j36.cube.util;
 
 import com.lupus.gc89j36.cube.Cube;
+import com.lupus.gc89j36.cube.CubeFace.Colour;
 
 public class CubeBuilderTestApp {
 
@@ -8,37 +9,37 @@ public class CubeBuilderTestApp {
         CubeBuilder builder = new CubeBuilder();
         
         Cube cube = builder.beginCube(1)
-                   .beginFace()
+                   .beginFace(Colour.GREEN)
                        .addEdge("N#")
                        .addEdge("55")
                        .addEdge("77")
                        .addEdge("#E")
                    .endFace()
-                   .beginFace()
+                   .beginFace(Colour.YELLOW)
                        .addEdge("N#")
                        .addEdge("55")
                        .addEdge("77")
                        .addEdge("#E")
                    .endFace()
-                   .beginFace()
+                   .beginFace(Colour.ORANGE)
                        .addEdge("N#")
                        .addEdge("55")
                        .addEdge("77")
                        .addEdge("#E")
                    .endFace()
-                   .beginFace()
+                   .beginFace(Colour.BLUE)
                        .addEdge("N#")
                        .addEdge("55")
                        .addEdge("77")
                        .addEdge("#E")
                    .endFace()
-                   .beginFace()
+                   .beginFace(Colour.GREEN)
                        .addEdge("N#")
                        .addEdge("55")
                        .addEdge("77")
                        .addEdge("#E")
                    .endFace()
-                   .beginFace()
+                   .beginFace(Colour.BLUE)
                        .addEdge("N#")
                        .addEdge("55")
                        .addEdge("77")

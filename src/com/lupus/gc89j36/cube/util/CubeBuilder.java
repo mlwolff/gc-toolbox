@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.lupus.gc89j36.cube.Cube;
 import com.lupus.gc89j36.cube.CubeFace;
+import com.lupus.gc89j36.cube.CubeFace.Colour;
 import com.lupus.gc89j36.cube.Edge;
 
 public class CubeBuilder {
@@ -13,6 +14,7 @@ public class CubeBuilder {
     private List<CubeFace> faces = null;
     private List<Edge> edges = null;
     private int cubeNum = 0;
+    private Colour faceColour;
     
     
     /**
@@ -57,7 +59,7 @@ public class CubeBuilder {
      * 
      * @return
      */
-    public CubeBuilder beginFace() {
+    public CubeBuilder beginFace(Colour colour) {
         if (!inCube) {
             throw new IllegalStateException("Cube building still not started.");
         }
@@ -74,6 +76,7 @@ public class CubeBuilder {
         }
        
         inFace = true;
+        faceColour = colour;
         
         return this;
     }
@@ -91,11 +94,12 @@ public class CubeBuilder {
             throw new IllegalArgumentException("Not enough edges available");
         }
         
-        CubeFace cubeFace = new CubeFace(edges.toArray(new Edge[edges.size()]));
+        CubeFace cubeFace = new CubeFace(edges.toArray(new Edge[edges.size()]), faceColour);
         
         edges.clear();
         faces.add(cubeFace);
         inFace = false;
+        faceColour = null;
         
         return this;
     }

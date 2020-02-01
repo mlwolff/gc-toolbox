@@ -43,13 +43,11 @@ public class CubeData {
         this.edgeNo = edgeNo;
     }
     
-    public String getCurrentData() {
+    public String getUpperData() {
         return cube.getFaces()[faceNo].getEdges()[edgeNo].getData();
     }
     
-    public String getCounterData() {
-        int counterFaceNo = 5 - faceNo;
-        
-        return cube.getFaces()[counterFaceNo].getEdges()[edgeNo].getData();
+    public String getLowerData() {
+        return cube.getFaces()[5 - faceNo].getEdges()[edgeNo].getData();
     }
 }

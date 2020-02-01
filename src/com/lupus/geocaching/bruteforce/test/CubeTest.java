@@ -28,7 +28,7 @@ public class CubeTest {
     static void checkCombination(List<Cube> cubes) {
         
         for (Cube cube : cubes) {
-            System.out.print(String.format("Cube %d #", cube.getNum()));
+            System.out.print(String.format("Cube %d # ", cube.getNum()));
         }
         System.out.println();;
         System.out.println("--------------------------------------------");
@@ -36,12 +36,16 @@ public class CubeTest {
         List<Variable<CubeData>> variables = new ArrayList<>();
         
         int cubeNum = 0;
-        variables.add(new CubeDataVariable(String.format("Cube %d", cubes.get(cubeNum).getNum()), 
-                                                                    new CubeData(cubes.get(cubeNum++))));
-        variables.add(new CubeDataVariable(String.format("Cube %d", cubes.get(cubeNum).getNum()), 
-                new CubeData(cubes.get(cubeNum++))));
+        
         variables.add(new CubeDataVariable(String.format("Cube %d", cubes.get(cubeNum).getNum()), 
                 new CubeData(cubes.get(cubeNum++))));
+        
+        variables.add(new CubeDataVariable(String.format("Cube %d", cubes.get(cubeNum).getNum()), 
+                new CubeData(cubes.get(cubeNum++))));
+        
+        variables.add(new CubeDataVariable(String.format("Cube %d", cubes.get(cubeNum).getNum()), 
+                new CubeData(cubes.get(cubeNum++))));
+        
         variables.add(new CubeDataVariable(String.format("Cube %d", cubes.get(cubeNum).getNum()), 
                 new CubeData(cubes.get(cubeNum++))));
 
@@ -53,8 +57,19 @@ public class CubeTest {
         
         for (VariableCombination<CubeData> vc : combinator) {
             if (checker.checkSolution(vc)) {
-                System.out.println(String.format("Combination %9d: %s %s", 
+                System.out.print(String.format("+++ Combination %9d: %s %s ", 
                         ++i, getStringValue(vc, false), getStringValue(vc, true)));
+                List<Variable<CubeData>> varsOfCombi = vc.getVariables();
+                
+                for (Variable<CubeData> varOfCombi : varsOfCombi) {
+					CubeData value = varOfCombi.getValue();
+					System.out.print(String.format("C%dF%dE%d %s, ", value.getCube().getNum(), value.getFaceNo(), value.getEdgeNo(), value.getCube().getFaces()[value.getFaceNo()].getColor()));
+				}
+                System.out.println();
+                
+            } else {
+//                System.out.println(String.format("--- Combination %9d: %s %s", 
+//                        ++i, getStringValue(vc, false), getStringValue(vc, true)));
             }
         }
                 

@@ -10,12 +10,16 @@ public class CubeDataChecker implements SolutionChecker<CubeData> {
     public boolean checkSolution(VariableCombination<CubeData> combination) {
         String upper = CubesUtil.getStringValue(combination, false);
         String lower = CubesUtil.getStringValue(combination, true);
+        int numOfUpperColours = CubesUtil.getNumberOfColors(combination, false);
+        int numOfLowerColours = CubesUtil.getNumberOfColors(combination, true);
         
         String validUpper = upper.replace("#", "");
         String validLower = lower.replace("#", "");
         
-        return validLower.length() == 6 && 
-               validUpper.length() == 6;
+        return validUpper.length() > 3 &&  validLower.length() > 3 && 
+               numOfUpperColours == 4 && numOfLowerColours == 4 &&
+               validUpper.charAt(0) == 'N' &&  validLower.charAt(0) == 'E'
+               ;
     }
 
 }

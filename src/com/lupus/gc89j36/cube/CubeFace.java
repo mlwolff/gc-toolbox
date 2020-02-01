@@ -13,17 +13,24 @@ import java.util.Objects;
  *
  */
 public class CubeFace {
+	public static enum Colour {ORANGE, YELLOW, GREEN, BLUE};
+	
     private final Edge[] edges;
+    private final Colour color;
 
     /**
      * Creates the face of a cube.
      * 
      * @param edges
      *      Array of 4 {@link Edge edges}
+     * @param color
+     * 		Color of face
      */
-    public CubeFace(Edge[] edges) {
+    public CubeFace(Edge[] edges, Colour color) {
+    	Objects.requireNonNull(color, "Parameter color must not be null");
         checkEdges(edges);
         this.edges = edges;
+        this.color = color;
     }
 
     /**
@@ -33,10 +40,18 @@ public class CubeFace {
         return edges;
     }
 
+    /**
+     * 
+     * @return
+     */
+    public Colour getColor() {
+		return color;
+	}
+    
     @Override
-    public String toString() {
-        return "CubeFace [edges=" + Arrays.toString(edges) + "]";
-    }
+	public String toString() {
+		return "CubeFace [edges=" + Arrays.toString(edges) + ", color=" + color + "]";
+	}
 
     /**
      * 
