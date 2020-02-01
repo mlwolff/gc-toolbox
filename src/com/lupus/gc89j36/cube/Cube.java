@@ -10,14 +10,16 @@ import java.util.Objects;
  */
 public class Cube {
     final CubeFace[] faces;
+    final int num;
 
     /**
      * 
      * @param faces
      */
-    public Cube(CubeFace[] faces) {
+    public Cube(CubeFace[] faces, int num) {
         checkFaces(faces);
         this.faces = faces;
+        this.num = num;
     }
 
     /**
@@ -26,10 +28,15 @@ public class Cube {
     public CubeFace[] getFaces() {
         return faces;
     }
+    
+    public int getNum() {
+        return num;
+    }
 
+    
     @Override
     public String toString() {
-        return "Cube [faces=" + Arrays.toString(faces) + "]";
+        return "Cube [faces=" + Arrays.toString(faces) + ", num=" + num + "]";
     }
 
     /**

@@ -4,12 +4,23 @@ import com.lupus.gc89j36.cube.Cube;
 
 public class CubeData {
     /** The Cube. */
-    private Cube cube;
+    private final Cube cube;
     private int faceNo = 0;
     private int edgeNo = 0;
     
     public CubeData(Cube cube) {
         this.cube = cube;
+    }
+    
+    /**
+     * Copy constructor.
+     * 
+     * @param data
+     */
+    public CubeData(CubeData data) {
+        this.cube = data.cube;
+        this.faceNo = data.faceNo;
+        this.edgeNo = data.edgeNo;
     }
     
     public Cube getCube() {

@@ -7,7 +7,7 @@ public class CubeBuilderTestApp {
     public static void main(String[] args) {
         CubeBuilder builder = new CubeBuilder();
         
-        Cube cube = builder.beginCube()
+        Cube cube = builder.beginCube(1)
                    .beginFace()
                        .addEdge("N#")
                        .addEdge("55")

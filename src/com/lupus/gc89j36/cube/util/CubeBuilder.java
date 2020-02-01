@@ -12,6 +12,7 @@ public class CubeBuilder {
     private boolean inFace = false;
     private List<CubeFace> faces = null;
     private List<Edge> edges = null;
+    private int cubeNum = 0;
     
     
     /**
@@ -20,12 +21,13 @@ public class CubeBuilder {
      * @return
      *      this
      */
-    public CubeBuilder beginCube() {
+    public CubeBuilder beginCube(int num) {
         if (inCube) {
             throw new IllegalStateException("Cube building already started.");
         }
         
         inCube = true;
+        cubeNum = num;
         
         return this;
     }
@@ -44,9 +46,11 @@ public class CubeBuilder {
         }
         
         CubeFace[] facesArr = faces.toArray(new CubeFace[faces.size()]);
+        Cube cube = new Cube(facesArr, cubeNum);
         
         inCube = false;
-        return new Cube(facesArr);
+        faces.clear();
+        return cube;
     }
     
     /**
