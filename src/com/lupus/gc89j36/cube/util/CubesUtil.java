@@ -132,7 +132,11 @@ public class CubesUtil {
             CubeData value = variable.getValue();
             String part = opposite ? value.getLowerData() : value.getUpperData();
             
-            builder.append(part);
+            if (opposite) {
+            	builder.insert(0, part);
+            } else {
+            	builder.append(part);
+            }
         }
         
         return builder.toString();

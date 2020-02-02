@@ -48,6 +48,8 @@ public class CubeData {
     }
     
     public String getLowerData() {
-        return cube.getFaces()[5 - faceNo].getEdges()[edgeNo].getData();
+    	int lowerEdgeNo = (edgeNo + 2) % 4;
+    	
+        return cube.getFaces()[5 - faceNo].getEdges()[lowerEdgeNo].getData();
     }
 }

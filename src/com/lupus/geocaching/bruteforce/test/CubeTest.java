@@ -30,7 +30,7 @@ public class CubeTest {
         for (Cube cube : cubes) {
             System.out.print(String.format("Cube %d # ", cube.getNum()));
         }
-        System.out.println();;
+        System.out.println();
         System.out.println("--------------------------------------------");
         
         List<Variable<CubeData>> variables = new ArrayList<>();
@@ -63,18 +63,28 @@ public class CubeTest {
                 
                 for (Variable<CubeData> varOfCombi : varsOfCombi) {
 					CubeData value = varOfCombi.getValue();
-					System.out.print(String.format("C%dF%dE%d %s, ", value.getCube().getNum(), value.getFaceNo(), value.getEdgeNo(), value.getCube().getFaces()[value.getFaceNo()].getColor()));
+					Cube cube = value.getCube();
+					int faceNo = value.getFaceNo();
+					
+					System.out.print(String.format("C%dF%dE%d %s, ", 
+							cube.getNum(), 
+							faceNo, 
+							value.getEdgeNo(), 
+							cube.getFaces()[faceNo].getColor()));
 				}
                 System.out.println();
                 
-            } else {
-//                System.out.println(String.format("--- Combination %9d: %s %s", 
-//                        ++i, getStringValue(vc, false), getStringValue(vc, true)));
             }
         }
-                
     }
-    
+
+    /**
+     * see: stackoverflow
+     * 
+     * @param <E>
+     * @param original
+     * @return
+     */
     static public <E> List<List<E>> generatePerm(List<E> original) {
         if (original.isEmpty()) {
           List<List<E>> result = new ArrayList<>(); 
